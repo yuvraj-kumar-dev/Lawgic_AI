@@ -1,0 +1,193 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawgic AI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+        {%  block style %}
+
+        {% endblock %}
+
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: #000;
+            color: #fff;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+        }
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: #121212;
+            color: #fff;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #ffcc00, #ff8800); /* Changed to yellow */
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px 20px;
+            background: #000;
+        }
+        .feature {
+            max-width: 300px;
+            background: #121212;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        .feature h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        .feature p {
+            font-size: 16px;
+            color: #ccc;
+        }
+        .cta {
+            text-align: center;
+            padding: 50px 20px;
+            background: #121212;
+            color: #fff;
+        }
+        .cta h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+        }
+
+        * Contact Section Styles */
+    .contact {
+    margin-top: 20px;
+    padding: 10px;
+    background: #ffcc00;
+    color: #000;
+    border-radius: 5px;
+}
+
+#contact form {
+    max-width: 800px; /* Keep the width */
+    margin: 0; /* Remove centering */
+    margin-left: 20px; /* Shift the box to the left */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#contact form div {
+    text-align: left;
+}
+
+#contact form input, #contact form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #121212;
+    color: #fff;
+}
+
+#contact form input::placeholder, #contact form textarea::placeholder {
+    color: #ccc;
+}
+
+#contact form button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background: #ffcc00;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+#contact form button:hover {
+    background: #e6b800;
+}
+       
+    </style>
+</head>
+<body>
+    <header>
+       <a href="{% url 'index' %}"> <div class="logo"><img src="{% static 'images/logoai.png' %}" alt="Clickable image"  style="height: 75px; width: 150px;" alt="logo" 
+            ></div></a>
+        <nav>
+            <ul>
+                <li><a href="{% url 'feature' %}">Features</a></li>
+                <li><a href="{% url 'work' %}">How It Works</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'community' %}">Community</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% block body %}
+    {% endblock %}
+
+  
+    <footer>
+        <p>&copy; 2025 Lawgic AI | Empowering Legal Awareness for All | Made with &#10084; by Yuvraj</p>
+    </footer>
+</body>
+</html>

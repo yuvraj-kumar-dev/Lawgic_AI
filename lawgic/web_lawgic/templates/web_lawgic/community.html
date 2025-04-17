@@ -1,0 +1,26 @@
+{% extends 'web_lawgic/layout.html' %}
+
+{% block body %}
+
+{% for post in posts %}
+<section id="community" class="container">
+  
+  <div id="blog-posts">
+      <!-- Blog posts will be dynamically loaded here -->
+      <article class="blog-post">
+        <h3 style="color:  #ffcc00;">{{ post.title }}</h3>
+          <p>By <b>{{ post.author }}</b> | <i>{{ post.updated_on}}</i></p>
+          <p class="card-text">{{post.content|slice:":200" }}</p>
+          {% if post.slug %}
+    <a href="{% url 'post_detail' post.slug %}" class="btn">Read More &rarr;</a>
+  {% else %}
+    <span class="text-danger">Slug missing for this post</span>
+  {% endif %}
+      </article>
+  </div>
+</section>
+{% endfor %}
+
+{% endblock %}
+
+
