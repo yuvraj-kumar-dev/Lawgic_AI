@@ -15,6 +15,10 @@ relying on misleading sources.
 
 ---
 
+## 🚀 Live Demo
+
+👉 [Try Lawgic AI Now](https://lawgicai.streamlit.app/)  
+
 ## 🧠 Features
 
 🤖 Chatbot Interface: Ask legal questions in plain English or Hindi.
