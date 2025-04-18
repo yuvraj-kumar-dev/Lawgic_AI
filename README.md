@@ -17,7 +17,7 @@ relying on misleading sources.
 
 ## 🚀 Live Demo
 
-👉 [Try Lawgic AI Now](https://lawgicai.streamlit.app/)  
+👉 [Try Lawgic AI Chatbot Now](https://lawgicai.streamlit.app/)  **(chatbot only)**
 
 ## 🧠 Features
 
@@ -33,6 +33,10 @@ relying on misleading sources.
 
 🔐 Privacy-First: All queries run locally or through secure APIs.
 
+👥 Community Section: Includes a dedicated Community Section where users can discuss legal topics, ask questions, and share insights. Verified lawyers and legal experts can join the conversation to explain new laws and policies in simple, easy-to-understand terms—making legal knowledge more accessible for everyone.
+
+
+
 
 ## ⚙️ Installation
 
@@ -41,34 +45,29 @@ relying on misleading sources.
    ```bash
    git clone https://github.com/yuvraj-kumar-dev/Lawgic_AI.git
    cd Lawgic_AI
-   ``
 
 2. **Create a Virtual Environment**
 
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ``
+   python -m venv env
+   .\env\Scripts\activate
 
 3. **Install Dependencies**
 
    ```bash
    pip install -r requirements.txt
-   ``
 
 4. **Set Up Environment Variables**
 
    Create a `.env` file in the root directory and add your configuration:
 
    ```env
-   HUGGINGFACE_API_TOKEN=your_huggingface_api_token
-   ``
+   HF_TOKEN= "your_huggingface_api_token"
 
 5. **Run the Application**
 
    ```bash
    python manage.py runserver
-   ``
 
    Access the chatbot at `http://localhost:8000/chatbot/`.
 
@@ -78,21 +77,20 @@ relying on misleading sources.
 
 To tailor the chatbot to your specific legal documens:
 
-1. **Prepare Your Documents*: Gather your legal documents in `.pdf` format.**
+1. **Prepare Your Documents*: Gather your legal documents in `.pdf` format and place them in data folder**
 
-2. **Generate Embeddings and Create FAISS Index**:
+2. **Ensure that `DATA_PATH` points to your data folder**
 
-   ```python
-   from langchain.vectorstores import FAISS
-   from langchain.embeddings import HuggingFaceEmbeddings
+3. **Generate Embeddings and Create FAISS Index**:
 
-   embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-   documents = [...]  # Load your documents here
-   faiss_index = FAISS.from_documents(documents, embeddings)
-   faiss_index.save_local("faiss_index")
-   ``
+   ```python (create_memory.py)
+   DB_FAISS_PATH = "vectorstore/db_faiss"
+   db = FAISS.from_documents(chunks, embedding_model)
+   db.save_local(DB_FAISS_PATH)
 
-3. **Update the Application*: Ensure that the application points to your new `faiss_index`.**
+4. **Run python create_memory.py**
+
+5. **`vector/db_faiss` will be generated now ensure that `DB_FAISS_PATH = "vectorstore/db_faiss"` (connect_memory.py) points to your generated db_faiss**
 
 ---
 
