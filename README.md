@@ -69,7 +69,7 @@ relying on misleading sources.
    ```bash
    python manage.py runserver
 
-   Access the chatbot at `http://localhost:8000/chatbot/`.
+   Access the chatbot at `http://127.0.0.1:8000/chatbot`.
 
 ---
 
@@ -77,7 +77,7 @@ relying on misleading sources.
 
 To tailor the chatbot to your specific legal documens:
 
-1. **Prepare Your Documents*: Gather your legal documents in `.pdf` format and place them in data folder**
+1. **Prepare Your Documents*: Gather your legal documents in `.pdf` format and place them in data folder*
 
 2. **Ensure that `DATA_PATH` points to your data folder**
 
@@ -91,6 +91,8 @@ To tailor the chatbot to your specific legal documens:
 4. **Run python create_memory.py**
 
 5. **`vector/db_faiss` will be generated now ensure that `DB_FAISS_PATH = "vectorstore/db_faiss"` (connect_memory.py) points to your generated db_faiss**
+
+6. **Also change the iframe's src to your localhost and run** `streamlit run chatbot.py`
 
 ---
 
