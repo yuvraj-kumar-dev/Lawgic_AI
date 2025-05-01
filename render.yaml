@@ -9,7 +9,7 @@ services:
     startCommand: gunicorn lawgic.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: lawgic.settings  
+        value: lawgic.lawgic.settings  
       - key: PYTHON_VERSION
         value: 3.11
       - key: SECRET_KEY
