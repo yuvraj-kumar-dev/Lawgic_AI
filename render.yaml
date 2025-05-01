@@ -4,16 +4,15 @@ services:
     env: python
     buildCommand: |
       pip install -r requirements.txt
-      python manage.py collectstatic --noinput
-      python manage.py migrate
+      python lawgic/manage.py collectstatic --noinput
+      python lawgic/manage.py migrate
     startCommand: gunicorn lawgic.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: lawgic.settings
+        value: lawgic.settings  
       - key: PYTHON_VERSION
         value: 3.11
       - key: SECRET_KEY
-        value: ${SECRET_KEY}
+        value: ${SECRET_KEY}  
       - key: DEBUG
         value: "False"
-      # Add any other required environment variables like database URLs or API keys here
