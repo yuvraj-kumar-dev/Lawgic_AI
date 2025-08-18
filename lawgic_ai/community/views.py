@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 
@@ -40,6 +40,22 @@ def logout_user(request):
     logout(request)
 
     return render(request, 'home.html')
+
+def signup_user(request):
+
+    if request.method == 'POST':
+
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        if User.objects.filter(username=username).exists():
+            return HttpResponse("Username already exists!!")
+    
+        user = User.objects.create_user(username=username, password=password)
+        user.save()
+        return redirect('login_user')
+
+    return render(request, 'signup.html')
 
 
 
