@@ -10,7 +10,7 @@ def home(request):
         return render(request, 'welcome.html')
     
     else:
-        return redirect('login_user')
+        return render(request, 'home.html')
 
 
 def login_user(request):
@@ -56,6 +56,14 @@ def signup_user(request):
         return redirect('login_user')
 
     return render(request, 'signup.html')
+
+def profile(request):
+
+    username = request.user.username
+
+    context = {'username': username}
+
+    return render(request, 'profile.html', context)
 
 
 
