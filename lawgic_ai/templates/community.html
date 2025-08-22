@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid my-3">
+    <ul>{% for post in object_list %}
+        <li><a href="{% url 'post' post.pk %}">{{post.title}}</a> <br> {{post.body|truncatewords:10}}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

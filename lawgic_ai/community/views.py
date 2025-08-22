@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.views.generic import ListView, DetailView
+from .models import Post
 
 # Create your views here.
 
@@ -64,6 +66,15 @@ def profile(request):
     context = {'username': username}
 
     return render(request, 'profile.html', context)
+
+class community(ListView):
+    model = Post
+    template_name = 'community.html'
+
+class post(DetailView):
+    model = Post
+    template_name = 'post.html'
+
 
 
 
