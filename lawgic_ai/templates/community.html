@@ -4,7 +4,9 @@
 
 <div class="container-fluid my-3">
     <ul>{% for post in object_list %}
-        <li><a href="{% url 'post' post.pk %}">{{post.title}}</a> <br> {{post.body|truncatewords:10}}</li>
+        <li><a href="{% url 'post' post.pk %}">{{post.title}}</a> 
+            <br> <small style="background-color: dodgerblue;">{{post.author}}</small><br> {{post.body|truncatewords:10}}</li>
+        <hr>
         {% endfor %}
     </ul>
 </div>
