@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
 
 # Create your views here.
@@ -74,6 +74,12 @@ class community(ListView):
 class post(DetailView):
     model = Post
     template_name = 'post.html'
+
+class addpost(CreateView):
+    model = Post
+    template_name = 'addpost.html'
+    fields = '__all__'
+
 
 
 

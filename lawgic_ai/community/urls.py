@@ -1,6 +1,6 @@
 from django.urls import path
 from community import views
-from .views import community, post
+from .views import community, post, addpost
 
 urlpatterns = [
     path("", views.home, name="home"),
@@ -10,4 +10,5 @@ urlpatterns = [
     path("profile", views.profile, name="profile"),
     path("community", community.as_view() , name="community"),
     path("post/<int:pk>", post.as_view(), name = "post"),
+    path("addpost", addpost.as_view(), name="addpost")
 ]
