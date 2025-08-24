@@ -20,4 +20,13 @@ class Post(models.Model):
     def __str__(self):
         return str(self.title) + ' | ' + str(self.author) + ' | ' + str(self.date)
     
+class comment(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
+    date = models.DateField(auto_now_add = True)
+    body = models.TextField()
+
+    def __str__(self):
+        return str(self.author)
+    
 

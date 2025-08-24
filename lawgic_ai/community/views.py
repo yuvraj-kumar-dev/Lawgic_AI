@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
-from .models import Post
+from .models import Post, comment
 from .forms import AddPost
 
 # Create your views here.
@@ -90,8 +90,5 @@ class addpost(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-
-
-
-
+    
 
