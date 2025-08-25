@@ -17,15 +17,23 @@
 
 <hr>
 
-<!-- <div class="container">
-   <ul>{% for comment in object_list %}
-   <li><small>{{comment.author}}</small>
-    <br> <h5>{{comment.body}}</h5></li>
-    <hr>
-    {% endfor %}
-    </ul>
 
-</div> -->
+
+{% if not post.comments.all %}
+<h3>No Comments yet...</h3>
+
+{% else %}
+
+<div class="container-fluid">
+    <h3>Comments</h3>
+    {% for comment in post.comments.all %}
+<small>{{comment.author}}</small>
+<h5>{{comment.body}}</h5>
+<hr>
+{% endfor %}
+</div>
+
+{% endif %}
 
 
 {% endblock %}

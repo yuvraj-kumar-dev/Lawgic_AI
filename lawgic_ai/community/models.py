@@ -21,8 +21,8 @@ class Post(models.Model):
         return str(self.title) + ' | ' + str(self.author) + ' | ' + str(self.date)
     
 class comment(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
+    author = models.CharField(max_length=255)
+    post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE, null=True)
     date = models.DateField(auto_now_add = True)
     body = models.TextField()
 
