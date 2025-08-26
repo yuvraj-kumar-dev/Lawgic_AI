@@ -9,12 +9,40 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(self.user)
+    
+
+TAGS_CHOICES = [
+
+    ('General Legal Categories', [
+
+        ('Civil Rights', 'Civil Rights'),
+        ('Property & Real Estate', 'Property & Real Estate'),
+        ('Cyber & Digital Law', 'Cyber & Digital Law'),
+        ('Business & Corporate', 'Business & Corporate'),
+        ('Employment & Labour', 'Employment & Labour')
+
+    ]),
+
+    ('Support', [
+
+        ('Urgent Help', 'Urgent Help'),
+        ('Legal Advice', 'Legal Advice'),
+        ('Case Discussion', 'Case Discussion'),
+        ('Recent Ammendents', 'Recent Ammendents')
+
+    ]),
+
+    ('Lawgic AI', [
+        ('Lawgic Verified', 'Lawgic Verified')
+    ]),
+]
 
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
+    tag = models.CharField(max_length=22, choices=TAGS_CHOICES, default='Legal Advice')
     date = models.DateField(auto_now_add=True)
 
     def __str__(self):
@@ -29,4 +57,3 @@ class comment(models.Model):
     def __str__(self):
         return str(self.author)
     
-
